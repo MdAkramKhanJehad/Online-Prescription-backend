@@ -9,6 +9,8 @@ namespace Online_Prescription.Repository
 {
     public class DoctorRepository : DatabaseRepository
     {
+        private readonly DoctorPrescriptionRepository _doctorToPrescriptionRepository = new DoctorPrescriptionRepository();
+        private readonly PrescriptionRepository _prescriptionRepository = new PrescriptionRepository();
         public Doctor Add(Doctor doctor)
         {
             DatabaseContext.Doctors.Add(doctor);
@@ -38,6 +40,20 @@ namespace Online_Prescription.Repository
         {
             try
             {
+                var doctorPrescription = _doctorToPrescriptionRepository.GetByDoctorId(doctor.DId);
+                while (doctorPrescription != null)
+                {
+                    var prescriptionId = doctorPrescription.PrescriptionId;
+                    var prescription = _prescriptionRepository.GetById(prescriptionId);
+                    if (prescription != null)
+                    {
+                        _prescriptionRepository.Delete(prescription);
+                    }
+
+                    doctorPrescription = _doctorToPrescriptionRepository.GetByDoctorId(doctor.DId); ;
+                }
+
+
                 DatabaseContext.Doctors.Remove(doctor);
                 DatabaseContext.SaveChanges();
                 return true;

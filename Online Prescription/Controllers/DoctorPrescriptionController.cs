@@ -21,9 +21,9 @@ namespace Online_Prescription.Controllers
 
 
         [HttpGet("api/doctorPrescription/getById")]
-        public IActionResult GetDoctorPrescriptionById(int dId)
+        public IActionResult GetDoctorPrescriptionById(int pId)
         {
-            var doctorPrescription = _doctorPrescriptionRepository.GetById(dId);
+            var doctorPrescription = _doctorPrescriptionRepository.GetByPrescriptionId(pId);
 
             return Ok(doctorPrescription);
         }
@@ -44,11 +44,20 @@ namespace Online_Prescription.Controllers
 
 
         [HttpGet("api/doctorPrescription/delete")]
-        public IActionResult DeleteDoctorToPrescription(int dId)
+        public IActionResult DeleteDoctorToPrescription(int pId)
         {
-            var doctorPrescription = _doctorPrescriptionRepository.GetById(dId);
-            _doctorPrescriptionRepository.Delete(doctorPrescription);
-            return Ok(true);
+            var doctorPrescription = _doctorPrescriptionRepository.GetByPrescriptionId(pId);
+            if (doctorPrescription != null)
+            {
+                _doctorPrescriptionRepository.Delete(doctorPrescription);
+                return Ok(true);
+            }
+            else
+            {
+                return BadRequest("DoctorPrescription object is not available");
+            }
+
+           
         }
 
     }

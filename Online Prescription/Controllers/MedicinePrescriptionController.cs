@@ -47,8 +47,17 @@ namespace Online_Prescription.Controllers
         public IActionResult DeleteMedicinePrescription(int dId)
         {
             var medicinePrescription = _medicinePrescriptionRepository.GetById(dId);
-            _medicinePrescriptionRepository.Delete(medicinePrescription);
-            return Ok(true);
+
+            if (medicinePrescription != null)
+            {
+                _medicinePrescriptionRepository.Delete(medicinePrescription);
+                return Ok(true);
+            }
+            else
+            {
+                return BadRequest("MedicinePrescription object is not available");
+            }
+           
         }
     }
 }

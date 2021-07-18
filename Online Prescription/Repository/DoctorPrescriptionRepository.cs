@@ -21,10 +21,15 @@ namespace Online_Prescription.Repository
             return DatabaseContext.DoctorPrescriptions.ToList();
         }
 
-        public DoctorPrescription GetById(int prescriptionId)
+        public DoctorPrescription GetByPrescriptionId(int prescriptionId)
         {
             return DatabaseContext.DoctorPrescriptions.FirstOrDefault(doctorPrescription =>
                 doctorPrescription.PrescriptionId == prescriptionId);
+        }
+        public DoctorPrescription GetByDoctorId(int doctorId)
+        {
+            return DatabaseContext.DoctorPrescriptions.FirstOrDefault(doctorPrescription =>
+                doctorPrescription.DoctorId == doctorId);
         }
 
         public DoctorPrescription Update(DoctorPrescription doctorPrescription)
