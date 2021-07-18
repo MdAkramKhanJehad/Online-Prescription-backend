@@ -22,8 +22,8 @@ namespace Online_Prescription.Repository
 
         public MedicinePrescription GetById(int prescriptionId)
         {
-            return DatabaseContext.MedicinePrescriptions.SingleOrDefault(doctorPrescription =>
-                doctorPrescription.PrescriptionId == prescriptionId);
+            return DatabaseContext.MedicinePrescriptions.FirstOrDefault(medicinePrescription =>
+                medicinePrescription.PrescriptionId == prescriptionId);
         }
 
         public MedicinePrescription Update(MedicinePrescription doctorPrescription)

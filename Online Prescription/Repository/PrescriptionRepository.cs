@@ -71,10 +71,19 @@ namespace Online_Prescription.Repository
         {
             try
             {
-                var id = prescription.PId;
-                var doctorPrescription = _doctorToPrescriptionRepository.GetById(id);
-                    
-                
+                var pId = prescription.PId;
+                var doctorPrescription = _doctorToPrescriptionRepository.GetById(pId);
+
+                var medicinePrescription = _medicinePrescriptionRepository.GetById(pId);
+                while (medicinePrescription != null)
+                {
+                    //Console.WriteLine("Inside delete and medicine pres, yeeeah!");
+                    DatabaseContext.MedicinePrescriptions.Remove(medicinePrescription);
+                    DatabaseContext.SaveChanges();
+                    medicinePrescription = _medicinePrescriptionRepository.GetById(pId);
+                }
+
+
                 DatabaseContext.Prescriptions.Remove(prescription);
                 DatabaseContext.SaveChanges();
                 DatabaseContext.DoctorPrescriptions.Remove(doctorPrescription);

@@ -23,7 +23,7 @@ namespace Online_Prescription.Repository
 
         public DoctorPrescription GetById(int prescriptionId)
         {
-            return DatabaseContext.DoctorPrescriptions.SingleOrDefault(doctorPrescription =>
+            return DatabaseContext.DoctorPrescriptions.FirstOrDefault(doctorPrescription =>
                 doctorPrescription.PrescriptionId == prescriptionId);
         }
 

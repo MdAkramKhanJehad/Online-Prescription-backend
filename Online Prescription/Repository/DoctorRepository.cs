@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Threading.Tasks;
 using Online_Prescription.Models;
@@ -23,6 +24,7 @@ namespace Online_Prescription.Repository
         public Doctor GetById(int dId)
         {
             return DatabaseContext.Doctors.SingleOrDefault(doctor => doctor.DId == dId);
+
         }
 
         public Doctor Update(Doctor doctor)
