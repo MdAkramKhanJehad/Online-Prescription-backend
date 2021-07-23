@@ -20,10 +20,26 @@ namespace Online_Prescription.Repository
             return DatabaseContext.MedicinePrescriptions.ToList();
         }
 
-        public MedicinePrescription GetById(int prescriptionId)
+        public MedicinePrescription GetByPrescriptionId(int prescriptionId)
         {
             return DatabaseContext.MedicinePrescriptions.FirstOrDefault(medicinePrescription =>
                 medicinePrescription.PrescriptionId == prescriptionId);
+        }
+
+        public MedicinePrescription GetByMedicineIdAndPrescriptionId(int prescriptionId, int medicineId)
+        {
+            var oldMedicinePrescription = DatabaseContext.MedicinePrescriptions.FirstOrDefault(medPrescription =>
+                            medPrescription.PrescriptionId == prescriptionId && medPrescription.MedicineId == medicineId);
+
+            
+            return oldMedicinePrescription;
+           
+           
+        }
+        public MedicinePrescription GetById(int id)
+        {
+            return DatabaseContext.MedicinePrescriptions.FirstOrDefault(medicinePrescription =>
+                medicinePrescription.Id == id);
         }
 
         public MedicinePrescription Update(MedicinePrescription doctorPrescription)

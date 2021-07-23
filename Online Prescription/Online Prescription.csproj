@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="ViewModel\" />
-    <Folder Include="Upload\" />
   </ItemGroup>
 
 </Project>

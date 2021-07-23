@@ -61,8 +61,43 @@ namespace Online_Prescription.Repository
 
         public Prescription Update(Prescription prescription)
         {
-            DatabaseContext.Prescriptions.Update(prescription);
+            var id  = DatabaseContext.Prescriptions.Update(prescription);
             DatabaseContext.SaveChanges();
+
+            
+            var medicineIdsList = prescription.MedicineIdsList;
+            foreach (var medicineId in medicineIdsList)
+            {
+                var oldMedicinePrescription = _medicinePrescriptionRepository.GetByMedicineIdAndPrescriptionId(id.Entity.PId, medicineId);
+
+                var medicinePrescription  = new MedicinePrescription
+                {
+                    PrescriptionId = id.Entity.PId,
+                    MedicineId = medicineId
+                };
+
+                if (oldMedicinePrescription != null)
+                {
+                    medicinePrescription.Id = oldMedicinePrescription.Id;
+                }
+                
+              
+                
+                DatabaseContext.MedicinePrescriptions.Update(medicinePrescription);
+                DatabaseContext.SaveChanges();
+            }
+
+
+            var doctorPrescription = new DoctorPrescription
+            {
+                PrescriptionId = id.Entity.PId,
+                DoctorId = id.Entity.DoctorId
+            };
+
+            DatabaseContext.DoctorPrescriptions.Update(doctorPrescription);
+            DatabaseContext.SaveChanges();
+
+
             return prescription;
         }
 
@@ -74,12 +109,12 @@ namespace Online_Prescription.Repository
                 var pId = prescription.PId;
                 var doctorPrescription = _doctorToPrescriptionRepository.GetByPrescriptionId(pId);
 
-                var medicinePrescription = _medicinePrescriptionRepository.GetById(pId);
+                var medicinePrescription = _medicinePrescriptionRepository.GetByPrescriptionId(pId);
                 while (medicinePrescription != null)
                 {
                     DatabaseContext.MedicinePrescriptions.Remove(medicinePrescription);
                     DatabaseContext.SaveChanges();
-                    medicinePrescription = _medicinePrescriptionRepository.GetById(pId);
+                    medicinePrescription = _medicinePrescriptionRepository.GetByPrescriptionId(pId);
                 }
 
 

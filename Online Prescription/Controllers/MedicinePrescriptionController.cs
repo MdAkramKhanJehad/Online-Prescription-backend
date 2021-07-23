@@ -20,10 +20,18 @@ namespace Online_Prescription.Controllers
         }
 
 
-        [HttpGet("api/medicinePrescription/getById")]
-        public IActionResult GetMedicinePrescriptionById(int dId)
+        [HttpGet("api/medicinePrescription/getByPrescriptionId")]
+        public IActionResult GetMedicinePrescriptionByPrescriptionId(int pId)
         {
-            var medicinePrescription = _medicinePrescriptionRepository.GetById(dId);
+            var medicinePrescription = _medicinePrescriptionRepository.GetByPrescriptionId(pId);
+
+            return Ok(medicinePrescription);
+        }
+
+        [HttpGet("api/medicinePrescription/getById")]
+        public IActionResult GetMedicinePrescriptionById(int id)
+        {
+            var medicinePrescription = _medicinePrescriptionRepository.GetById(id);
 
             return Ok(medicinePrescription);
         }
@@ -44,9 +52,9 @@ namespace Online_Prescription.Controllers
 
 
         [HttpGet("api/medicinePrescription/delete")]
-        public IActionResult DeleteMedicinePrescription(int dId)
+        public IActionResult DeleteMedicinePrescription(int id)
         {
-            var medicinePrescription = _medicinePrescriptionRepository.GetById(dId);
+            var medicinePrescription = _medicinePrescriptionRepository.GetById(id);
 
             if (medicinePrescription != null)
             {
