@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Online_Prescription.Models;
 using Online_Prescription.Repository;
@@ -14,6 +15,7 @@ namespace Online_Prescription.Controllers
 
 
         [HttpPost("api/prescription/add")]
+        [Authorize]
         public IActionResult AddPrescription([FromBody] Prescription prescription)
         {
             var addedPrescription = _prescriptionRepository.Add(prescription);
@@ -23,6 +25,7 @@ namespace Online_Prescription.Controllers
 
 
         [HttpGet("api/prescription/getById")]
+        [Authorize]
         public IActionResult GetPrescriptionById(int pId)
         {
             var prescription = _prescriptionRepository.GetById(pId);
@@ -32,6 +35,7 @@ namespace Online_Prescription.Controllers
 
 
         [HttpGet("api/prescription/getAll")]
+        [Authorize]
         public IActionResult GetAllPrescriptions()
         {
             return Ok(_prescriptionRepository.GetAll());
@@ -39,6 +43,7 @@ namespace Online_Prescription.Controllers
 
 
         [HttpPut("api/prescription/update")]
+        [Authorize]
         public IActionResult UpdatePrescription([FromBody] Prescription prescription)
         {
             return Ok(_prescriptionRepository.Update(prescription));
@@ -46,6 +51,7 @@ namespace Online_Prescription.Controllers
 
 
         [HttpDelete("api/prescription/delete")]
+        [Authorize]
         public IActionResult DeletePrescription(int pId)
         {
             var prescription = _prescriptionRepository.GetById(pId);

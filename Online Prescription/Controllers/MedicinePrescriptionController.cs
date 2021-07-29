@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Online_Prescription.Models;
 using Online_Prescription.Repository;
@@ -13,6 +14,7 @@ namespace Online_Prescription.Controllers
         private readonly MedicinePrescriptionRepository _medicinePrescriptionRepository = new MedicinePrescriptionRepository();
 
         [HttpPost("api/medicinePrescription/add")]
+        [Authorize]
         public IActionResult AddMedicinePrescription([FromBody] MedicinePrescription medicinePrescription)
         {
             var addedMedicinePrescription = _medicinePrescriptionRepository.Add(medicinePrescription);
@@ -21,6 +23,7 @@ namespace Online_Prescription.Controllers
 
 
         [HttpGet("api/medicinePrescription/getByPrescriptionId")]
+        [Authorize]
         public IActionResult GetMedicinePrescriptionByPrescriptionId(int pId)
         {
             var medicinePrescription = _medicinePrescriptionRepository.GetByPrescriptionId(pId);
@@ -29,6 +32,7 @@ namespace Online_Prescription.Controllers
         }
 
         [HttpGet("api/medicinePrescription/getById")]
+        [Authorize]
         public IActionResult GetMedicinePrescriptionById(int id)
         {
             var medicinePrescription = _medicinePrescriptionRepository.GetById(id);
@@ -38,6 +42,7 @@ namespace Online_Prescription.Controllers
 
 
         [HttpGet("api/medicinePrescription/getAll")]
+        [Authorize]
         public IActionResult GetAllMedicinePrescription()
         {
             return Ok(_medicinePrescriptionRepository.GetAll());
@@ -45,6 +50,7 @@ namespace Online_Prescription.Controllers
 
 
         [HttpPut("api/medicinePrescription/update")]
+        [Authorize]
         public IActionResult UpdateMedicinePrescription([FromBody] MedicinePrescription medicinePrescription)
         {
             return Ok(_medicinePrescriptionRepository.Update(medicinePrescription));
@@ -52,6 +58,7 @@ namespace Online_Prescription.Controllers
 
 
         [HttpDelete("api/medicinePrescription/delete")]
+        [Authorize]
         public IActionResult DeleteMedicinePrescription(int id)
         {
             var medicinePrescription = _medicinePrescriptionRepository.GetById(id);
