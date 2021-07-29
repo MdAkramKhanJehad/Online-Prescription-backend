@@ -38,7 +38,8 @@ namespace Online_Prescription.Controllers
         [Authorize]
         public IActionResult GetAllPrescriptions()
         {
-            return Ok(_prescriptionRepository.GetAll());
+            var response = _prescriptionRepository.GetAll();
+            return Ok(response);
         }
 
 

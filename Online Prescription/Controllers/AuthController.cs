@@ -20,7 +20,7 @@ namespace Online_Prescription.Controllers
             {
                 return BadRequest("Invalid client request");
             }
-            if (doctor.Username == "ak" && doctor.Password == "1234")
+            if (doctor.Username == "ak" && doctor.Password == "1234")   
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("1007AksSecretKey1007"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -28,7 +28,7 @@ namespace Online_Prescription.Controllers
                     issuer: "http://localhost:5002",
                     audience: "http://localhost:5002",
                     claims: new List<Claim>(),
-                    expires: DateTime.Now.AddMinutes(10),
+                    expires: DateTime.Now.AddDays(1),
                     signingCredentials: signinCredentials
                 );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);

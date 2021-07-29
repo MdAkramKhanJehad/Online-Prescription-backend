@@ -5,6 +5,7 @@ using Online_Prescription.Repository;
 
 namespace Online_Prescription.Controllers
 {
+
     public class DoctorController : Controller
     {
         private readonly DoctorRepository _doctorRepository = new DoctorRepository();     
