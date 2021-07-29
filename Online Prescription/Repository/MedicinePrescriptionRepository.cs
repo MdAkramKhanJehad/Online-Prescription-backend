@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Online_Prescription.Models;
 
 namespace Online_Prescription.Repository
@@ -42,11 +43,11 @@ namespace Online_Prescription.Repository
                 medicinePrescription.Id == id);
         }
 
-        public MedicinePrescription Update(MedicinePrescription doctorPrescription)
+        public MedicinePrescription Update(MedicinePrescription medicinePrescription)
         {
-            DatabaseContext.MedicinePrescriptions.Update(doctorPrescription);
+            DatabaseContext.MedicinePrescriptions.Update(medicinePrescription);
             DatabaseContext.SaveChanges();
-            return doctorPrescription;
+            return medicinePrescription;
         }
 
         public bool Delete(MedicinePrescription doctorPrescription)

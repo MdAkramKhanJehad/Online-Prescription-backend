@@ -44,14 +44,14 @@ namespace Online_Prescription.Controllers
         }
 
 
-        [HttpPost("api/medicinePrescription/update")]
+        [HttpPut("api/medicinePrescription/update")]
         public IActionResult UpdateMedicinePrescription([FromBody] MedicinePrescription medicinePrescription)
         {
             return Ok(_medicinePrescriptionRepository.Update(medicinePrescription));
         }
 
 
-        [HttpGet("api/medicinePrescription/delete")]
+        [HttpDelete("api/medicinePrescription/delete")]
         public IActionResult DeleteMedicinePrescription(int id)
         {
             var medicinePrescription = _medicinePrescriptionRepository.GetById(id);

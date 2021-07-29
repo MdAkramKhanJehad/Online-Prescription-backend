@@ -29,13 +29,13 @@ namespace Online_Prescription.Controllers
             return Ok(_medicineRepository.GetAll());
         }
 
-        [HttpPost("api/medicine/update")]
+        [HttpPut("api/medicine/update")]
         public IActionResult UpdateMedicine([FromBody] Medicine medicine)
         {
             return Ok(_medicineRepository.Update(medicine));
         }
 
-        [HttpGet("api/medicine/delete")]
+        [HttpDelete("api/medicine/delete")]
         public IActionResult DeleteMedicine(int mId)
         {
             var medicine = _medicineRepository.GetById(mId);

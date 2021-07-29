@@ -77,3 +77,4 @@ E:\Visual Studio\Online Prescription\Online Prescription\bin\Debug\netcoreapp3.1
 E:\Visual Studio\Online Prescription\Online Prescription\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\Visual Studio\Online Prescription\Online Prescription\bin\Debug\netcoreapp3.1\Humanizer.dll
 E:\Visual Studio\Online Prescription\Online Prescription\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+E:\Visual Studio\Online Prescription\Online Prescription\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

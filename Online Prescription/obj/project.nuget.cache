@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "7swodcZ8s04jVu0FkkYTWSS1iW90G4CRTNBfRu4+6eezdGs4Ke3XbMJ8Ei7SVMJAGUbGWM3jwppdG9JhSxf2pw==",
+  "dgSpecHash": "X4nU669FRjrsznU/o8pYtHeLjDlVE2mbvcePzV0Kk6VDml8AQdqETW2wWBtgnVMkZNGfdbt/Oe7x4nvgwikooQ==",
   "success": true,
   "projectFilePath": "E:\\Visual Studio\\Online Prescription\\Online Prescription\\Online Prescription.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.17\\microsoft.aspnetcore.authentication.jwtbearer.3.1.17.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.hosting\\2.2.7\\microsoft.aspnetcore.hosting.2.2.7.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",
