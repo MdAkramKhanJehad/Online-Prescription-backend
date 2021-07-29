@@ -68,7 +68,6 @@ namespace Online_Prescription.Repository
                  ids.Sort();
                  prescriptions[i].MedicineIdsList = ids;
              }
-             Console.WriteLine("HELLO");
              return prescriptions;
         }
 
