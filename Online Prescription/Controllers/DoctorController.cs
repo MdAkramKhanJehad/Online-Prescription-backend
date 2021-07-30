@@ -26,11 +26,16 @@ namespace Online_Prescription.Controllers
             var tokeOptions = new JwtSecurityToken(
                 issuer: "http://localhost:5002",
                 audience: "http://localhost:5002",
-                claims: new List<Claim>(),
+                claims: new Claim[]
+                {
+                    new Claim("userId", (addedDoctor.DId).ToString())
+                },
                 expires: DateTime.Now.AddDays(1),
                 signingCredentials: signinCredentials
             );
             var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+
+            
             return Ok(new { Token = tokenString });
 
             //return Ok(addedDoctor);
